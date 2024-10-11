@@ -17,10 +17,6 @@ dict_temp ={
     3: "k"
 }
 
-
-
-
-
 def main():
     while True:  # Boucle principale pour permettre un retour au menu
         print("Choisissez le type d'unité que vous voulez")
