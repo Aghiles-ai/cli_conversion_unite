@@ -1,5 +1,6 @@
 import Poids
 import Temperature
+import Distance
 
 
 
@@ -18,16 +19,29 @@ dict_temp ={
     3: "k"
 }
 
+
+dict_distance={
+    1: "mm",
+    2: "cm",
+    3: "dm",
+    4: "m",
+    5: "km",
+    6: "pouce",
+    7: "pied",
+    8: "mile"
+}
+
 def main():
     while True:  # Boucle principale pour permettre un retour au menu
         print("Choisissez le type d'unité que vous voulez")
         print("1 : masse")
         print("2 : température")
+        print("3 : distance")
         print("0 : quitter")  # Option pour quitter le programme
 
         num = int(input("Entrez le numéro qui vous convient : "))
-        while num < 0 or num > 2:  # Validation de l'entrée
-            print("Votre choix n'est pas valide, choisissez entre 0 et 2.")
+        while num < 0 or num > 3:  # Validation de l'entrée
+            print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
             num = int(input("Entrez le numéro qui vous convient : "))
         
         if num == 0:  # Quitte le programme
@@ -122,10 +136,10 @@ def main():
 
                 if unit == 0:
                     break  # Retourne au choix du type d'unité
-                elif unit < 1 or unit > 3:
-                    print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
+                elif unit < 1 or unit > 8:
+                    print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
                 else:
-                    print(f"Vous avez choisi l'unité de température : {unit}")
+                    
 
                     # Choisir l'unité de résultat
                     while True:  # Boucle pour choisir l'unité de résultat
@@ -141,11 +155,11 @@ def main():
                         elif unit_res < 1 or unit_res > 3:
                             print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
                         else:
-                            print(dict_poids[unit]," => " ,dict_poids[unit_res])
+                            print(dict_temp[unit]," => " ,dict_temp[unit_res])
                             value = float(input("valeur= "))
 
-                            unit = dict_poids[unit]
-                            unit_res= dict_poids[unit_res]
+                            unit = dict_temp[unit]
+                            unit_res= dict_temp[unit_res]
                             
                             match unit:
                                 case "c":
@@ -158,6 +172,92 @@ def main():
 
                                 case "k":
                                     resulat=Temperature.kelvin_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                            print("*****************************************")
+
+
+                            break  # Quitte la boucle d'unités après un choix valide
+                break  # Quitte la boucle de température après un choix valide
+
+        elif num == 3:  # Gestion de la température
+            while True:  # Boucle pour choisir l'unité de température
+                print("Choisissez l'unité de départ")
+                print("1 : mm")
+                print("2 : cm")
+                print("3 : dm")
+                print("4 : m")
+                print("5 : km")
+                print("6 : pouce")
+                print("7 : pied")
+                print("8 : mile")
+                print("0 : retour")
+                unit = int(input("Entrez le numéro qui vous convient : "))
+                
+
+                if unit == 0:
+                    break  # Retourne au choix du type d'unité
+                elif unit < 1 or unit > 8:
+                    print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                else:
+                    
+
+                    # Choisir l'unité de résultat
+                    while True:  # Boucle pour choisir l'unité de résultat
+                        print("Choisissez l'unité du resultat")
+                        print("1 : mm")
+                        print("2 : cm")
+                        print("3 : dm")
+                        print("4 : m")
+                        print("5 : km")
+                        print("6 : pouce")
+                        print("7 : pied")
+                        print("8 : mile")
+                        print("0 : retour")
+                        unit_res = int(input("Entrez le numéro qui vous convient : "))
+                        
+                        if unit_res == 0:
+                            break  # Retourne au choix du type d'unité
+                        elif unit_res < 1 or unit_res > 8:
+                            print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                        else:
+                            print(dict_distance[unit]," => " ,dict_distance[unit_res])
+                            value = float(input("valeur= "))
+
+                            unit = dict_distance[unit]
+                            unit_res= dict_distance[unit_res]
+                            
+                            match unit:
+                                case "mm":
+                                    resulat=Distance.mm_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+                                
+                                case "cm":
+                                    resulat=Distance.cm_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "dm":
+                                    resulat=Distance.dm_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "m":
+                                    resulat=Distance.m_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "km":
+                                    resulat=Distance.km_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "pouce":
+                                    resulat=Distance.pouce_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "pied":
+                                    resulat=Distance.pied_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "mile":
+                                    resulat=Distance.mile_to(unit=unit_res,value=value)
                                     print(value," ",unit," = ",resulat," ",unit_res)
 
                             print("*****************************************")
