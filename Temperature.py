@@ -1,64 +1,66 @@
-# Fonction pour convertir Celsius en Fahrenheit
-def celsius_to_fahrenheit(celsius):
-    return (celsius * 9.0/5.0) + 32
+def celsius_to(*, unit, value):
+    #check for aberrant values
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if unit not in ["C", "F", "K"]:
+        raise ValueError("L'unité doit être 'C' (Celsius), 'F' (Fahrenheit) ou 'K' (Kelvin)")
+    if value < -273.15:
+        raise ValueError("La température en Celsius ne peut pas être inférieure à -273.15°C")
+    
+    case = {
+        "C": value,
+        "F": (value * 9.0/5.0) + 32,
+        "K": value + 273.15,
+    }
+    
+    return case[unit]
 
-# Fonction pour convertir Fahrenheit en Celsius
-def fahrenheit_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * 5.0/9.0
+def fahrenheit_to(*, unit, value):
+    #check for aberrant values
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if unit not in ["C", "F", "K"]:
+        raise ValueError("L'unité doit être 'C' (Celsius), 'F' (Fahrenheit) ou 'K' (Kelvin)")
+    if value < -459.67:
+        raise ValueError("La température en Fahrenheit ne peut pas être inférieure à -459.67°F")
+    
+    case = {
+        "C": (value - 32) * 5.0/9.0,
+        "F": value,
+        "K": (value - 32) * 5.0/9.0 + 273.15,
+    }
+    
+    return case[unit]
 
-# Fonction pour convertir Celsius en Kelvin
-def celsius_to_kelvin(celsius):
-    return celsius + 273.15
+def kelvin_to(*, unit, value):
+    #check for aberrant values
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if unit not in ["C", "F", "K"]:
+        raise ValueError("L'unité doit être 'C' (Celsius), 'F' (Fahrenheit) ou 'K' (Kelvin)")
+    if value < 0:
+        raise ValueError("La température en Kelvin ne peut pas être inférieure à 0K")
+    
+    case = {
+        "C": value - 273.15,
+        "F": (value - 273.15) * 9.0/5.0 + 32,
+        "K": value,
+    }
+    
+    return case[unit]
 
-# Fonction pour convertir Kelvin en Celsius
-def kelvin_to_celsius(kelvin):
-    if kelvin < 0:
-        raise ValueError("La température en Kelvin ne peut pas être négative.")
-    return kelvin - 273.15
 
-# Fonction pour convertir Fahrenheit en Kelvin
-def fahrenheit_to_kelvin(fahrenheit):
-    celsius = fahrenheit_to_celsius(fahrenheit)
-    return celsius_to_kelvin(celsius)
+if __name__ == "__main__":
+    #Tests unitaires
+    import math
 
-# Fonction pour convertir Kelvin en Fahrenheit
-def kelvin_to_fahrenheit(kelvin):
-    if kelvin < 0:
-        raise ValueError("La température en Kelvin ne peut pas être négative.")
-    celsius = kelvin_to_celsius(kelvin)
-    return celsius_to_fahrenheit(celsius)
+    assert celsius_to(unit="F", value=0) == 32
+    assert celsius_to(unit="K", value=0) == 273.15
 
-# Programme principal
-value = float(input("Entrez la température à convertir : "))
-from_unit = input("Entrez l'unité actuelle (C pour Celsius, F pour Fahrenheit, K pour Kelvin) : ").upper()
-to_unit = input("Entrez l'unité de destination (C pour Celsius, F pour Fahrenheit, K pour Kelvin) : ").upper()
+    assert math.isclose(fahrenheit_to(unit="C", value=0), -17.77777777777778, rel_tol=1e-9)
+    assert math.isclose(fahrenheit_to(unit="K", value=0), 255.3722222222222, rel_tol=1e-9)
 
-try:
-    if from_unit == 'C' and to_unit == 'F':
-        result = celsius_to_fahrenheit(value)
-        print(f'{value}°C est égal à {result}°F')
-    elif from_unit == 'C' and to_unit == 'K':
-        result = celsius_to_kelvin(value)
-        print(f'{value}°C est égal à {result} K')
-    elif from_unit == 'F' and to_unit == 'C':
-        result = fahrenheit_to_celsius(value)
-        print(f'{value}°F est égal à {result}°C')
-    elif from_unit == 'F' and to_unit == 'K':
-        result = fahrenheit_to_kelvin(value)
-        print(f'{value}°F est égal à {result} K')
-    elif from_unit == 'K' and to_unit == 'C':
-        if value < 0:
-            print("Erreur : la température en Kelvin ne peut pas être négative.")
-        else:
-            result = kelvin_to_celsius(value)
-            print(f'{value} K est égal à {result}°C')
-    elif from_unit == 'K' and to_unit == 'F':
-        if value < 0:
-            print("Erreur : la température en Kelvin ne peut pas être négative.")
-        else:
-            result = kelvin_to_fahrenheit(value)
-            print(f'{value} K est égal à {result}°F')
-    else:
-        print("Conversion non supportée ou unité non valide. Veuillez entrer 'C', 'F' ou 'K'.")
-except ValueError as e:
-    print(e)
+    assert math.isclose(kelvin_to(unit="C", value=0), -273.15, rel_tol=1e-9)
+    assert math.isclose(kelvin_to(unit="F", value=0), -459.67, rel_tol=1e-9)
+
+    print("Tests passés avec succès")
