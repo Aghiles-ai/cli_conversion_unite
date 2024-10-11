@@ -4,13 +4,13 @@ def mm_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value / 1000,
         "km": value / 1000000,
-        "dcm": value / 100,
+        "dm": value / 100,
         "cm": value / 10,
         "mm": value,
         "pouce": value * 0.0393701,
@@ -21,18 +21,18 @@ def mm_to(*, unit, value):
     return case[unit]
 
 
-def dcm_to(*, unit, value):
+def dm_to(*, unit, value):
     if not isinstance(value, (int, float)):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value / 10,
         "km": value / 10000,
-        "dcm": value,
+        "dm": value,
         "cm": value * 10,
         "mm": value * 100,
         "pouce": value * 3.93701,
@@ -48,13 +48,13 @@ def pouce_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value * 0.0254,
         "km": value * 0.0000254,
-        "dcm": value * 0.254,
+        "dm": value * 0.254,
         "cm": value * 2.54,
         "mm": value * 25.4,
         "pouce": value,
@@ -70,13 +70,13 @@ def pied_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value * 0.3048,
         "km": value * 0.0003048,
-        "dcm": value * 3.048,
+        "dm": value * 3.048,
         "cm": value * 30.48,
         "mm": value * 304.8,
         "pouce": value * 12,
@@ -92,13 +92,13 @@ def m_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value,
         "km": value / 1000,
-        "dcm": value * 10,
+        "dm": value * 10,
         "cm": value * 100,
         "mm": value * 1000,
         "pouce": value * 39.3701,
@@ -114,13 +114,13 @@ def km_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value * 1000,
         "km": value,
-        "dcm": value * 10000,
+        "dm": value * 10000,
         "cm": value * 100000,
         "mm": value * 1000000,
         "pouce": value * 39370.1,
@@ -136,13 +136,13 @@ def cm_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value / 100,
         "km": value / 100000,
-        "dcm": value / 10,
+        "dm": value / 10,
         "cm": value,
         "mm": value * 10,
         "pouce": value * 0.393701,
@@ -158,13 +158,13 @@ def mile_to(*, unit, value):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m", "km", "dcm", "cm", "mm", "pouce", "pied", "mile"]:
-        raise ValueError("L'unité doit être 'm', 'km', 'dcm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
+    if unit not in ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]:
+        raise ValueError("L'unité doit être 'm', 'km', 'dm', 'cm', 'mm', 'pouce', 'pied' ou 'mile'")
 
     case = {
         "m": value * 1609.34,
         "km": value * 1.60934,
-        "dcm": value * 16093.4,
+        "dm": value * 16093.4,
         "cm": value * 160934,
         "mm": value * 1609340,
         "pouce": value * 63360,
@@ -199,10 +199,10 @@ if __name__ == "__main__":
     assert mm_to(unit="cm", value=5) == 0.5
     assert math.isclose(mm_to(unit="pouce", value=5), 0.19685, rel_tol=1e-2)
 
-    # Tests pour dcm_to
-    assert dcm_to(unit="m", value=5) == 0.5
-    assert dcm_to(unit="km", value=5) == 0.0005
-    assert math.isclose(dcm_to(unit="pouce", value=5), 19.685, rel_tol=1e-2)
+    # Tests pour dm_to
+    assert dm_to(unit="m", value=5) == 0.5
+    assert dm_to(unit="km", value=5) == 0.0005
+    assert math.isclose(dm_to(unit="pouce", value=5), 19.685, rel_tol=1e-2)
 
     # Tests pour pouce_to
     assert pouce_to(unit="m", value=5) == 0.127
