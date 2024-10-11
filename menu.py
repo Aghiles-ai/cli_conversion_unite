@@ -1,4 +1,5 @@
 import Poids
+import Temperature
 
 
 
@@ -140,8 +141,28 @@ def main():
                         elif unit_res < 1 or unit_res > 3:
                             print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
                         else:
-                            print(unit,";" ,unit_res)
-                            #inroduire les fonction de poids
+                            print(dict_poids[unit]," => " ,dict_poids[unit_res])
+                            value = float(input("valeur= "))
+
+                            unit = dict_poids[unit]
+                            unit_res= dict_poids[unit_res]
+                            
+                            match unit:
+                                case "c":
+                                    resulat=Temperature.celsius_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+                                
+                                case "f":
+                                    resulat=Temperature.fahrenheit_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                                case "k":
+                                    resulat=Temperature.kelvin_to(unit=unit_res,value=value)
+                                    print(value," ",unit," = ",resulat," ",unit_res)
+
+                            print("*****************************************")
+
+
                             break  # Quitte la boucle d'unités après un choix valide
                 break  # Quitte la boucle de température après un choix valide
 
