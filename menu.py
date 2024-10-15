@@ -38,12 +38,17 @@ def main():
         print("2 : température")
         print("3 : distance")
         print("0 : quitter")  # Option pour quitter le programme
+        while True:
+            try:
+                num = int(input("Entrez le numéro qui vous convient : "))
+                if num < 0 or num > 3:
+                    print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
+                else:
+                    break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+            except ValueError:
+                print("Veuillez entrer un nombre entier valide.")
 
-        num = int(input("Entrez le numéro qui vous convient : "))
-        while num < 0 or num > 3:  # Validation de l'entrée
-            print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
-            num = int(input("Entrez le numéro qui vous convient : "))
-        
+
         if num == 0:  # Quitte le programme
             print("Merci et à bientôt !")
             break
@@ -58,12 +63,21 @@ def main():
                 print("5 : livre")
                 print("6 : once")
                 print("0 : retour")
-                unit = int(input("Entrez le numéro qui vous convient : "))
+
+                
+                while True:
+                    try:
+                        unit = int(input("Entrez le numéro qui vous convient : "))
+                        if unit < 0 or unit > 6:
+                            print("Votre choix n'est pas valide, choisissez entre 0 et 6.")
+                        else:
+                            break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                    except ValueError:
+                        print("Veuillez entrer un nombre entier valide.")
 
                 if unit == 0:
                     break  # Retourne au choix du type d'unité
-                elif unit < 1 or unit > 6:
-                    print("Votre choix n'est pas valide, choisissez entre 0 et 6.")
+                
                 else:
                     # Choisir l'unité de résultat
                     while True:
@@ -75,16 +89,33 @@ def main():
                         print("5 : livre")
                         print("6 : onces")
                         print("0 : retour")
-                        unit_res = int(input("Entrez le numéro qui vous convient : "))
+                        
+                        while True:
+                            try:
+                                unit_res = int(input("Entrez le numéro qui vous convient : "))
+                                if unit_res < 0 or unit_res > 6:
+                                    print("Votre choix n'est pas valide, choisissez entre 0 et 6.")
+                                else:
+                                    break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                            except ValueError:
+                                print("Veuillez entrer un nombre entier valide.")
                         
                         if unit_res == 0:
                             break  # Retourne au choix du type d'unité
-                        elif unit_res < 1 or unit_res > 6:
-                            print("Votre choix n'est pas valide, choisissez entre 0 et 6.")
+                        
                         else:
 
                             print(dict_poids[unit]," => " ,dict_poids[unit_res])
-                            value = float(input("valeur= "))
+
+                            while True:
+                                try:
+                                    value = float(input("valeur= "))
+                                    if value < 0 :
+                                        print("Votre choix n'est pas valide, inserez une valuer posive.")
+                                    else:
+                                        break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                                except ValueError:
+                                    print("Veuillez entrer un nombre  valide.")
 
                             unit = dict_poids[unit]
                             unit_res= dict_poids[unit_res]
@@ -132,12 +163,19 @@ def main():
                 print("2 : Fahrenheit")
                 print("3 : Kelvin")
                 print("0 : retour")
-                unit = int(input("Entrez le numéro qui vous convient : "))
+                while True:
+                    try:
+                        unit = int(input("Entrez le numéro qui vous convient : "))
+                        if unit < 0 or unit > 3:
+                            print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
+                        else:
+                            break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                    except ValueError:
+                        print("Veuillez entrer un nombre entier valide.")
 
                 if unit == 0:
                     break  # Retourne au choix du type d'unité
-                elif unit < 1 or unit > 8:
-                    print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                
                 else:
                     
 
@@ -148,29 +186,70 @@ def main():
                         print("2 : Fahrenheit")
                         print("3 : Kelvin")
                         print("0 : retour")
-                        unit_res = int(input("Entrez le numéro qui vous convient : "))
+                        while True:
+                            try:
+                                unit_res = int(input("Entrez le numéro qui vous convient : "))
+                                if unit_res < 0 or unit_res > 3:
+                                    print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
+                                else:
+                                    break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                            except ValueError:
+                                print("Veuillez entrer un nombre entier valide.")
                         
                         if unit_res == 0:
                             break  # Retourne au choix du type d'unité
-                        elif unit_res < 1 or unit_res > 3:
-                            print("Votre choix n'est pas valide, choisissez entre 0 et 3.")
+                        
                         else:
                             print(dict_temp[unit]," => " ,dict_temp[unit_res])
-                            value = float(input("valeur= "))
+                            
 
                             unit = dict_temp[unit]
                             unit_res= dict_temp[unit_res]
                             
                             match unit:
                                 case "c":
+                                    while True:
+                                        try:
+                                            value = float(input("valeur= "))
+                                            if value<-273.15:
+                                                print("La température en Celsius ne peut pas être inférieure à -273.15°C")
+                                            else:
+                                                break
+                                            
+                                        except ValueError:
+                                            print("Veuillez entrer un nombre entier valide.")
+                                    
                                     resulat=Temperature.celsius_to(unit=unit_res,value=value)
                                     print(value," ",unit," = ",resulat," ",unit_res)
+
                                 
                                 case "f":
+                                    while True:
+                                        try:
+                                            value = float(input("valeur= "))
+                                            if value<-459.67:
+                                                print("La température en Celsius ne peut pas être inférieure à -459.67°F")
+                                            else:
+                                                break
+                                            
+                                        except ValueError:
+                                            print("Veuillez entrer un nombre entier valide.")
+
                                     resulat=Temperature.fahrenheit_to(unit=unit_res,value=value)
                                     print(value," ",unit," = ",resulat," ",unit_res)
 
                                 case "k":
+                                    while True:
+                                        try:
+                                            value = float(input("valeur= "))
+                                            if value<0:
+                                                print("La température en Celsius ne peut pas être inférieure à 0K")
+                                            else:
+                                                break
+                                            
+                                        except ValueError:
+                                            print("Veuillez entrer un nombre entier valide.")
+                                            
                                     resulat=Temperature.kelvin_to(unit=unit_res,value=value)
                                     print(value," ",unit," = ",resulat," ",unit_res)
 
@@ -192,13 +271,20 @@ def main():
                 print("7 : pied")
                 print("8 : mile")
                 print("0 : retour")
-                unit = int(input("Entrez le numéro qui vous convient : "))
+                while True:
+                    try:
+                        unit = int(input("Entrez le numéro qui vous convient : "))
+                        if unit < 0 or unit > 8:
+                            print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                        else:
+                            break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                    except ValueError:
+                        print("Veuillez entrer un nombre entier valide.")
                 
 
                 if unit == 0:
                     break  # Retourne au choix du type d'unité
-                elif unit < 1 or unit > 8:
-                    print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                
                 else:
                     
 
@@ -214,15 +300,31 @@ def main():
                         print("7 : pied")
                         print("8 : mile")
                         print("0 : retour")
-                        unit_res = int(input("Entrez le numéro qui vous convient : "))
-                        
+
+                        while True:
+                            try:
+                                unit_res = int(input("Entrez le numéro qui vous convient : "))
+                                if unit_res < 0 or unit_res > 8:
+                                    print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                                else:
+                                    break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                            except ValueError:
+                                print("Veuillez entrer un nombre entier valide.")
+
                         if unit_res == 0:
                             break  # Retourne au choix du type d'unité
-                        elif unit_res < 1 or unit_res > 8:
-                            print("Votre choix n'est pas valide, choisissez entre 0 et 8.")
+                        
                         else:
                             print(dict_distance[unit]," => " ,dict_distance[unit_res])
-                            value = float(input("valeur= "))
+                            while True:
+                                try:
+                                    value = float(input("valeur= "))
+                                    if value < 0 :
+                                        print("Votre choix n'est pas valide, inserez une valuer posive.")
+                                    else:
+                                        break  # Sort de la boucle si l'entrée est un entier valide et dans la plage
+                                except ValueError:
+                                    print("Veuillez entrer un nombre  valide.")
 
                             unit = dict_distance[unit]
                             unit_res= dict_distance[unit_res]
