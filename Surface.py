@@ -17,6 +17,48 @@ def m2_to(*, unit, value):
     
     return case[unit]
 
+def mile2_to(*, unit, value):
+    # Vérification des valeurs aberrantes
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if value < 0:
+        raise ValueError("La valeur ne peut pas être négative")
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
+
+    case = {
+        "m²": value * 2_589_988.11,
+        "km²": value * 2.58999,
+        "hectare": value * 258.998811,
+        "acre": value * 640,
+        "p²": value * 27_878_400,
+        "mile²": value,
+        "pouce²": value * 4_014_489_600,
+    }
+
+    return case[unit]
+
+
+def pouce2_to(*, unit, value):
+    # Vérification des valeurs aberrantes
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if value < 0:
+        raise ValueError("La valeur ne peut pas être négative")
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
+
+    case = {
+        "m²": value * 0.00064516,
+        "km²": value * 6.4516e-10,
+        "hectare": value * 6.4516e-8,
+        "acre": value * 1.59423e-7,
+        "p²": value * 0.00694444,
+        "mile²": value * 2.49098e-10,
+        "pouce²": value,
+    }
+
+    return case[unit]
 
 def km2_to(*, unit, value):
     if not isinstance(value, (int, float)):
@@ -97,6 +139,16 @@ def p2_to(*, unit, value):
 # Tests unitaires pour les conversions de surface
 if __name__ == "__main__":
     import math
+    
+    # Tests pour mile2_to
+    assert math.isclose(mile2_to(unit="m²", value=1), 2_589_988.11, rel_tol=1e-2)
+    assert math.isclose(mile2_to(unit="p²", value=1), 27_878_400, rel_tol=1e-2)
+    assert math.isclose(mile2_to(unit="pouce²", value=1), 4_014_489_600, rel_tol=1e-2)
+
+    # Tests pour pouce2_to
+    assert math.isclose(pouce2_to(unit="m²", value=1), 0.00064516, rel_tol=1e-2)
+    assert math.isclose(pouce2_to(unit="p²", value=1), 0.00694444, rel_tol=1e-2)
+    assert math.isclose(pouce2_to(unit="mile²", value=1), 2.49098e-10, rel_tol=1e-2)
 
     # Tests pour m2_to
     assert m2_to(unit="km²", value=1_000_000) == 1
