@@ -1,11 +1,11 @@
-# Conversion de surfaces
+# Conversion des surfaces
 def m2_to(*, unit, value):
     if not isinstance(value, (int, float)):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m²", "km²", "hectare", "acre", "p²"]:
-        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre' ou 'p²'")
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
     
     case = {
         "m²": value,
@@ -13,32 +13,95 @@ def m2_to(*, unit, value):
         "hectare": value / 10_000,
         "acre": value / 4046.86,
         "p²": value * 10.7639,
+        "mile²": value / 2_589_988.11,
+        "pouce²": value * 1550.0031,
     }
     
     return case[unit]
 
-def mile2_to(*, unit, value):
-    # Vérification des valeurs aberrantes
+
+def km2_to(*, unit, value):
     if not isinstance(value, (int, float)):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
     if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
         raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
-
+    
     case = {
-        "m²": value * 2_589_988.11,
-        "km²": value * 2.58999,
-        "hectare": value * 258.998811,
-        "acre": value * 640,
-        "p²": value * 27_878_400,
-        "mile²": value,
-        "pouce²": value * 4_014_489_600,
+        "m²": value * 1_000_000,
+        "km²": value,
+        "hectare": value * 100,
+        "acre": value * 247.105,
+        "p²": value * 1.076e+7,
+        "mile²": value / 2.58999,
+        "pouce²": value * 1.55e+9,
     }
-
+    
     return case[unit]
 
 
+def hectare_to(*, unit, value):
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if value < 0:
+        raise ValueError("La valeur ne peut pas être négative")
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
+    
+    case = {
+        "m²": value * 10_000,
+        "km²": value / 100,
+        "hectare": value,
+        "acre": value * 2.47105,
+        "p²": value * 107_639,
+        "mile²": value / 258.998811,
+        "pouce²": value * 1.55e+7,
+    }
+    
+    return case[unit]
+
+
+def acre_to(*, unit, value):
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if value < 0:
+        raise ValueError("La valeur ne peut pas être négative")
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
+    
+    case = {
+        "m²": value * 4046.86,
+        "km²": value / 247.105,
+        "hectare": value / 2.47105,
+        "acre": value,
+        "p²": value * 43_560,
+        "mile²": value / 640,
+        "pouce²": value * 6.273e+6,
+    }
+    
+    return case[unit]
+
+
+def p2_to(*, unit, value):
+    if not isinstance(value, (int, float)):
+        raise TypeError("La valeur doit être un nombre")
+    if value < 0:
+        raise ValueError("La valeur ne peut pas être négative")
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
+    
+    case = {
+        "m²": value / 10.7639,
+        "km²": value / 1.076e+7,
+        "hectare": value / 107_639,
+        "acre": value / 43_560,
+        "p²": value,
+        "mile²": value / 27_878_400,
+        "pouce²": value * 144,
+    }
+    
+    return case[unit]
 def pouce2_to(*, unit, value):
     # Vérification des valeurs aberrantes
     if not isinstance(value, (int, float)):
@@ -59,84 +122,26 @@ def pouce2_to(*, unit, value):
     }
 
     return case[unit]
-
-def km2_to(*, unit, value):
+def mile2_to(*, unit, value):
+    # Vérification des valeurs aberrantes
     if not isinstance(value, (int, float)):
         raise TypeError("La valeur doit être un nombre")
     if value < 0:
         raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m²", "km²", "hectare", "acre", "p²"]:
-        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre' ou 'p²'")
-    
+    if unit not in ["m²", "km²", "hectare", "acre", "p²", "mile²", "pouce²"]:
+        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre', 'p²', 'mile²', ou 'pouce²'")
+
     case = {
-        "m²": value * 1_000_000,
-        "km²": value,
-        "hectare": value * 100,
-        "acre": value * 247.105,
-        "p²": value * 1.076e+7,
+        "m²": value * 2_589_988.11,
+        "km²": value * 2.58999,
+        "hectare": value * 258.998811,
+        "acre": value * 640,
+        "p²": value * 27_878_400,
+        "mile²": value,
+        "pouce²": value * 4_014_489_600,
     }
-    
+
     return case[unit]
-
-
-def hectare_to(*, unit, value):
-    if not isinstance(value, (int, float)):
-        raise TypeError("La valeur doit être un nombre")
-    if value < 0:
-        raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m²", "km²", "hectare", "acre", "p²"]:
-        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre' ou 'p²'")
-    
-    case = {
-        "m²": value * 10_000,
-        "km²": value / 100,
-        "hectare": value,
-        "acre": value * 2.47105,
-        "p²": value * 107639,
-    }
-    
-    return case[unit]
-
-
-def acre_to(*, unit, value):
-    if not isinstance(value, (int, float)):
-        raise TypeError("La valeur doit être un nombre")
-    if value < 0:
-        raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m²", "km²", "hectare", "acre", "p²"]:
-        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre' ou 'p²'")
-    
-    case = {
-        "m²": value * 4046.86,
-        "km²": value / 247.105,
-        "hectare": value / 2.47105,
-        "acre": value,
-        "p²": value * 43560,
-    }
-    
-    return case[unit]
-
-
-def p2_to(*, unit, value):
-    if not isinstance(value, (int, float)):
-        raise TypeError("La valeur doit être un nombre")
-    if value < 0:
-        raise ValueError("La valeur ne peut pas être négative")
-    if unit not in ["m²", "km²", "hectare", "acre", "p²"]:
-        raise ValueError("L'unité doit être 'm²', 'km²', 'hectare', 'acre' ou 'p²'")
-    
-    case = {
-        "m²": value / 10.7639,
-        "km²": value / 1.076e+7,
-        "hectare": value / 107639,
-        "acre": value / 43560,
-        "p²": value,
-    }
-    
-    return case[unit]
-
-
-# Tests unitaires pour les conversions de surface
 if __name__ == "__main__":
     import math
     
@@ -154,6 +159,7 @@ if __name__ == "__main__":
     assert m2_to(unit="km²", value=1_000_000) == 1
     assert math.isclose(m2_to(unit="acre", value=4046.86), 1, rel_tol=1e-2)
     assert math.isclose(m2_to(unit="p²", value=1), 10.76, rel_tol=1e-2)
+
     # Tests pour km2_to
     assert km2_to(unit="m²", value=1) == 1_000_000
     assert math.isclose(km2_to(unit="acre", value=1), 247.105, rel_tol=1e-2)
@@ -168,6 +174,6 @@ if __name__ == "__main__":
 
     # Tests pour p2_to
     assert p2_to(unit="m²", value=10.7639) == 1
-    assert math.isclose(p2_to(unit="acre", value=43560), 1, rel_tol=1e-2)
+    assert math.isclose(p2_to(unit="acre", value=43_560), 1, rel_tol=1e-2)
 
     print("Tous les tests ont réussi !")
