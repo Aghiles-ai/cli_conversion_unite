@@ -2,6 +2,12 @@
 
 Ce projet contient des scripts Python pour convertir différentes unités de mesure, y compris la température, la distance et le poids.
 
+## Lien vers le projet
+
+Trello : [Lien vers le Trello](https://trello.com/b/qARpQtj5/ueprocessusdud%C3%A9veloppementlo)
+
+Google doc : [Lien vers le google doc](https://docs.google.com/document/d/15TDHAYLjEUg6Lcgy5mWOdMLP7plT2saxSefvznrAIZE/edit?tab=t.0)
+
 ## Fonctionnalités
 
 ### Conversion de Température
@@ -15,6 +21,14 @@ Le fichier [Distance.py](Distance.py) contient des fonctions pour convertir les 
 ### Conversion de Poids
 
 Le fichier [Poids.py](Poids.py) contient des fonctions pour convertir les poids entre différentes unités (par exemple, grammes, kilogrammes, livres).
+
+### Conversion de la surface
+
+Le fichier [Surface.py](Surface.py) contient des fonctions pour convertir les surfaces entre différentes unités (par exemple, mètres carrés, kilomètres carrés, acres).
+
+### Conversion de la monnaie
+
+Le fichier [Money.py](Money.py) contient des fonctions pour convertir les devises entre différentes unités (par exemple, USD, EUR, GBP).
 
 ## Utilisation
 
