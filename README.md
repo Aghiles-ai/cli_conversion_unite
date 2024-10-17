@@ -10,38 +10,27 @@ Google doc : [Lien vers le google doc](https://docs.google.com/document/d/15TDHA
 
 ## Fonctionnalités
 
-### Conversion de Température
+Ce projet propose plusieurs modules pour effectuer des conversions dans différentes unités de mesure. Voici les fonctionnalités disponibles :
 
-Le fichier [Temperature.py](Temperature.py) contient des fonctions pour convertir les températures entre Celsius, Fahrenheit et Kelvin.
+### Conversions
 
-### Conversion de Distance
+- **Distance** : Convertit entre différentes unités de distance (mètres, kilomètres, miles, etc.).
+  - Implémenté dans [conversions/Distance.py](conversions/Distance.py)
+  
+- **Monnaie** : Convertit entre différentes devises (euros, dollars, yens, etc.).
+  - Implémenté dans [conversions/Monnaie.py](conversions/Monnaie.py)
+  
+- **Poids** : Convertit entre différentes unités de poids (grammes, kilogrammes, livres, etc.).
+  - Implémenté dans [conversions/Poids.py](conversions/Poids.py)
+  
+- **Surface** : Convertit entre différentes unités de surface (mètres carrés, hectares, acres, etc.).
+  - Implémenté dans [conversions/Surface.py](conversions/Surface.py)
+  
+- **Température** : Convertit entre différentes unités de température (Celsius, Fahrenheit, Kelvin, etc.).
+  - Implémenté dans [conversions/Temperature.py](conversions/Temperature.py)
 
-Le fichier [Distance.py](Distance.py) contient des fonctions pour convertir les distances entre différentes unités (par exemple, mètres, kilomètres, miles).
+### Menu
 
-### Conversion de Poids
+- **Menu Principal** : Interface utilisateur pour accéder aux différentes conversions.
+  - Implémenté dans [Menu_V2.py](Menu_V2.py)
 
-Le fichier [Poids.py](Poids.py) contient des fonctions pour convertir les poids entre différentes unités (par exemple, grammes, kilogrammes, livres).
-
-### Conversion de la surface
-
-Le fichier [Surface.py](Surface.py) contient des fonctions pour convertir les surfaces entre différentes unités (par exemple, mètres carrés, kilomètres carrés, acres).
-
-### Conversion de la monnaie
-
-Le fichier [Money.py](Money.py) contient des fonctions pour convertir les devises entre différentes unités (par exemple, USD, EUR, GBP).
-
-## Utilisation
-
-Pour utiliser les fonctions de conversion, importez les modules nécessaires dans votre script Python et appelez les fonctions avec les paramètres appropriés.
-
-Exemple d'utilisation pour convertir des températures :
-
-```python
-from Temperature import celsius_to, fahrenheit_to
-
-# Convertir 100 Celsius en Fahrenheit
-print(celsius_to(unit='f', value=100))
-
-# Convertir 212 Fahrenheit en Celsius
-print(fahrenheit_to(unit='c', value=212))
-```

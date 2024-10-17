@@ -1,5 +1,5 @@
-import Poids
-import Temperature
+import Poids as Poids
+import Temperature as Temperature
 import Distance
 
 
