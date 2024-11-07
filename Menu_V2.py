@@ -51,6 +51,7 @@ class ConversionCLI:
                 self.display_submenu(list(self.categories.keys())[int(choice) - 1])
             else:
                 print("\033[91mChoix invalide. Veuillez réessayer.\033[0m")
+                input()
 
     def display_submenu(self, category):
         while True:
@@ -70,32 +71,45 @@ class ConversionCLI:
                 break
             else:
                 print("\033[91mChoix invalide. Veuillez réessayer.\033[0m")
+                input()
 
     def perform_conversion(self, category, from_unit):
-        value = float(input(f"\nEntrez la valeur en {from_unit}: "))
-        print("\n\033[94mUnités de conversion disponibles:\033[0m")
-        units = self.categories[category].get_units()
-        for i, unit in enumerate(units, 1):
-            if unit != from_unit:
-                print(f"{i}. {unit}")
+        verif = True
+        while verif:
+            try :
+                value = float(input(f"\nEntrez la valeur en {from_unit}: "))
+                verif = False
+            except :
+                print("\033[91mValeur invalide. Veuillez réessayer.\033[0m")
+                input()
 
-        to_unit_choice = input("\nChoisissez l'unité de conversion: ")
-        if to_unit_choice.isdigit() and 1 <= int(to_unit_choice) <= len(units):
-            to_unit = units[int(to_unit_choice) - 1]
-            if to_unit != from_unit:
-                try:
-                    result = getattr(self.categories[category], f"{from_unit}_to")(unit=to_unit, value=value)
-                    self.clear_screen()
-                    print(f"\n\033[92m{value} {from_unit} = {result} {to_unit}\033[0m")
-                except Exception as e:
-                    self.clear_screen()
-                    print(f"\033[91mErreur lors de la conversion: {str(e)}\033[0m")
-                    
-                input("\nAppuyez sur Entrée pour continuer...")
+        while True :
+            print("\n\033[94mUnités de conversion disponibles:\033[0m")
+            units = self.categories[category].get_units()
+            for i, unit in enumerate(units, 1):
+                if unit != from_unit:
+                    print(f"{i}. {unit}")
+
+            to_unit_choice = input("\nChoisissez l'unité de conversion: ")
+            if to_unit_choice.isdigit() and 1 <= int(to_unit_choice) <= len(units):
+                to_unit = units[int(to_unit_choice) - 1]
+                if to_unit != from_unit:
+                    try:
+                        result = getattr(self.categories[category], f"{from_unit}_to")(unit=to_unit, value=value)
+                        self.clear_screen()
+                        print(f"\n\033[92m{value} {from_unit} = {result} {to_unit}\033[0m")
+                    except Exception as e:
+                        print(f"\033[91mErreur lors de la conversion: {str(e)}\033[0m")
+                        input()
+                        
+                    input("\nAppuyez sur Entrée pour continuer...")
+                    return
+                else:
+                    print("\033[91mL'unité source et de destination ne peuvent pas être identiques.\033[0m")
+                    input()
             else:
-                print("\033[91mL'unité source et de destination ne peuvent pas être identiques.\033[0m")
-        else:
-            print("\033[91mChoix invalide.\033[0m")
+                print("\033[91mChoix invalide.\033[0m")
+                input()
 
 if __name__ == "__main__":
     cli = ConversionCLI()
