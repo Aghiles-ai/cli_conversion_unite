@@ -1,6 +1,6 @@
 class Distance:
     def __init__(self):
-        self.units = ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mile"]
+        self.units = ["m", "km", "dm", "cm", "mm", "pouce", "pied", "mille"]
 
     def get_units(self):
         return self.units
@@ -23,7 +23,7 @@ class Distance:
             "mm": value,
             "pouce": value * 0.0393701,
             "pied": value * 0.00328084,
-            "mile": value * 0.000000621371,
+            "mille": value * 0.000000621371,
         }
         return case[unit]
 
@@ -37,7 +37,7 @@ class Distance:
             "mm": value * 100,
             "pouce": value * 3.93701,
             "pied": value * 0.328084,
-            "mile": value * 0.0000621371,
+            "mille": value * 0.0000621371,
         }
         return case[unit]
 
@@ -51,7 +51,7 @@ class Distance:
             "mm": value * 25.4,
             "pouce": value,
             "pied": value * 0.0833333,
-            "mile": value * 0.0000157828,
+            "mille": value * 0.0000157828,
         }
         return case[unit]
 
@@ -65,7 +65,7 @@ class Distance:
             "mm": value * 304.8,
             "pouce": value * 12,
             "pied": value,
-            "mile": value * 0.000189394,
+            "mille": value * 0.000189394,
         }
         return case[unit]
 
@@ -79,7 +79,7 @@ class Distance:
             "mm": value * 1000,
             "pouce": value * 39.3701,
             "pied": value * 3.28084,
-            "mile": value * 0.000621371,
+            "mille": value * 0.000621371,
         }
         return case[unit]
 
@@ -93,7 +93,7 @@ class Distance:
             "mm": value * 1000000,
             "pouce": value * 39370.1,
             "pied": value * 3280.84,
-            "mile": value * 0.621371,
+            "mille": value * 0.621371,
         }
         return case[unit]
 
@@ -107,11 +107,11 @@ class Distance:
             "mm": value * 10,
             "pouce": value * 0.393701,
             "pied": value * 0.0328084,
-            "mile": value * 0.0000062137,
+            "mille": value * 0.0000062137,
         }
         return case[unit]
 
-    def mile_to(self, unit, value):
+    def mille_to(self, unit, value):
         self._validate_input(unit, value)
         case = {
             "m": value * 1609.34,
@@ -121,7 +121,7 @@ class Distance:
             "mm": value * 1609340,
             "pouce": value * 63360,
             "pied": value * 5280,
-            "mile": value,
+            "mille": value,
         }
         return case[unit]
 
@@ -136,12 +136,12 @@ if __name__ == "__main__":
     assert math.isclose(d.m_to("pied", 5), 16.4042, rel_tol=1e-2)
 
     assert d.km_to("m", 5) == 5000
-    assert math.isclose(d.km_to("mile", 5), 3.10686, rel_tol=1e-2)
+    assert math.isclose(d.km_to("mille", 5), 3.10686, rel_tol=1e-2)
 
     assert d.cm_to("mm", 5) == 50
     assert math.isclose(d.cm_to("pouce", 5), 1.968505, rel_tol=1e-2)
 
-    assert math.isclose(d.mile_to("km", 5), 8.0467, rel_tol=1e-2)
+    assert math.isclose(d.mille_to("km", 5), 8.0467, rel_tol=1e-2)
 
     assert d.mm_to("m", 5) == 0.005
     assert d.mm_to("cm", 5) == 0.5
@@ -153,10 +153,10 @@ if __name__ == "__main__":
 
     assert d.pouce_to("m", 5) == 0.127
     assert d.pouce_to("cm", 5) == 12.7
-    assert math.isclose(d.pouce_to("mile", 5), 0.000078914, rel_tol=1e-2)
+    assert math.isclose(d.pouce_to("mille", 5), 0.000078914, rel_tol=1e-2)
 
     assert d.pied_to("m", 5) == 1.524
     assert d.pied_to("cm", 5) == 152.4
-    assert math.isclose(d.pied_to("mile", 5), 0.00094697, rel_tol=1e-2)
+    assert math.isclose(d.pied_to("mille", 5), 0.00094697, rel_tol=1e-2)
 
     print("Tous les tests ont réussi !")
