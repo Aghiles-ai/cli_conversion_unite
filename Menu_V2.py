@@ -17,6 +17,11 @@ class ConversionCLI:
         self.categories = {}
         self.load_conversion_modules()
 
+        #Si le fichier Favoris.csv n'existe pas, il est créé
+        if not os.path.exists("conversions/Favoris.csv"):
+            df = pd.DataFrame(columns=["Conversion", "Count"])
+            df.to_csv("conversions/Favoris.csv", index=False)
+
     def clear_screen(self):
         # Efface l'écran de la console
         os.system('cls' if os.name == 'nt' else 'clear')
