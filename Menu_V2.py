@@ -1,7 +1,16 @@
-import importlib
 import os
 import sys
-import pandas as pd
+
+# Vérifie si la bibliothèque est installée
+try:
+    import importlib
+    import pandas as pd
+except ImportError:
+    # Si ce n'est pas installé, installe-le
+    os.system("pip install --user importlib")
+    os.system("pip install --user pandas")
+    import importlib
+    import pandas as pd
 
 class ConversionCLI:
     def __init__(self):

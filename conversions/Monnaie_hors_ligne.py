@@ -69,8 +69,6 @@ class Monnaie_hors_ligne:
         return case[unit]
     
 if __name__ == "__main__":
-    import math
-
     monnaie = Monnaie_hors_ligne()
 
     assert monnaie.euro_to("dollar_americain", 1) == 1.18
