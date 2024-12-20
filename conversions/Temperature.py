@@ -52,7 +52,15 @@ class Temperature:
 
 
 if __name__ == "__main__":
-    import math
+    # Vérifie si la bibliothèque est installée
+    try:
+        import math
+    except ImportError:
+        # Si ce n'est pas installé, installe-le
+        import os
+        os.system("pip install --user math")
+        import math
+    
 
     temp = Temperature()
 
